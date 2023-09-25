@@ -1,5 +1,7 @@
+import Typography from '@mui/material/Typography';
+
 function Settings() {
-	return <div>Настройки</div>;
+	return <Typography>Настройки</Typography>;
 }
 
 export default Settings;

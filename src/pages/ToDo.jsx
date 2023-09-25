@@ -1,5 +1,7 @@
+import Typography from '@mui/material/Typography';
+
 function ToDo() {
-	return <div>To do</div>;
+	return <Typography>To-do</Typography>;
 }
 
 export default ToDo;
