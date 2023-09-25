@@ -8,7 +8,13 @@ function Layout() {
 	return (
 		<>
 			<Header />
-			<Box component='main'>
+			<Box
+				component='main'
+				sx={{
+					mt: (theme) => theme.spacing(3),
+					mx: (theme) => theme.spacing(1),
+				}}
+			>
 				<Outlet />
 			</Box>
 		</>

@@ -32,7 +32,7 @@ function Header() {
 								'&:hover': { color: '#E9EBEF' },
 							}}
 						>
-							To-Do
+							To-Do List
 						</Typography>
 					</NavLink>
 
