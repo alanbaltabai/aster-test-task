@@ -1,8 +1,4 @@
 :root {
-	line-height: 1.5;
-
-	color-scheme: light dark;
-
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
@@ -14,15 +10,4 @@ a {
 	text-decoration: none;
 	padding: 0.25em 1em;
 	border-radius: 0.5em;
-}
-
-@media (prefers-color-scheme: light) {
-	:root {
-		color: #213547;
-		background-color: #ffffff;
-	}
-
-	button {
-		background-color: #f9f9f9;
-	}
 }

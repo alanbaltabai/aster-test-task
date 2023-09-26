@@ -1,16 +1,19 @@
-import { ThemeProvider } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 
 import { RouterProvider } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 
+import getTheme from './src/MUItheme';
 import router from './src/routes';
-import theme from './MUItheme';
+import store from './src/store';
 
-function App() {
+const App = observer(function () {
 	return (
-		<ThemeProvider theme={theme}>
+		<ThemeProvider theme={getTheme(store.mode)}>
+			<CssBaseline />
 			<RouterProvider router={router} />
 		</ThemeProvider>
 	);
-}
+});
 
 export default App;
