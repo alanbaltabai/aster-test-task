@@ -9,7 +9,9 @@ import Task from '../components/Task';
 import { Box } from '@mui/material';
 
 const ToDo = observer(function ({ store }) {
-	const tasks = store.tasks.map((item, i) => <Task key={i} task={item} />);
+	const tasks = store.tasks.map((item, i) => (
+		<Task key={i} task={item} toggleComplete={toggleComplete} />
+	));
 
 	function handleClick() {
 		store.setTasks([
@@ -23,6 +25,14 @@ const ToDo = observer(function ({ store }) {
 		]);
 
 		store.setTask('');
+	}
+
+	function toggleComplete(id) {
+		store.setTasks(
+			store.tasks.map((item) =>
+				item.id === id ? { ...item, completed: !item.completed } : item
+			)
+		);
 	}
 
 	return (

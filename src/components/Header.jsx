@@ -17,7 +17,6 @@ function Header() {
 				backgroundColor: (theme) => theme.palette.primary.dark,
 				borderRadius: (theme) => theme.spacing(1),
 			}}
-			enableColorOnDark
 		>
 			<Toolbar>
 				<Box
