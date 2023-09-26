@@ -5,12 +5,16 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
 import { observer } from 'mobx-react-lite';
+import { Form, useActionData } from 'react-router-dom';
 
 import Task from '../components/Task';
 import EditTaskForm from '../components/EditTaskForm';
 import FilterNavs from '../components/FilterNavs';
+import { Typography } from '@mui/material';
 
 const ToDo = observer(function ({ store }) {
+	const actionData = useActionData();
+
 	const tasks = getFilteredTasks().map((item, i) =>
 		item.isEditing ? (
 			<>
@@ -107,6 +111,22 @@ const ToDo = observer(function ({ store }) {
 			</FormControl>
 
 			{tasks}
+
+			<Form method='post'>
+				<Button
+					type='submit'
+					variant='contained'
+					sx={{
+						color: (theme) => theme.palette.secondary.main,
+						'&:hover': { color: (theme) => theme.palette.primary.main },
+					}}
+					size='small'
+				>
+					Сохранить данные
+				</Button>
+			</Form>
+
+			{actionData && <Typography>{actionData.message}</Typography>}
 		</Box>
 	);
 });

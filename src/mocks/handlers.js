@@ -9,6 +9,26 @@ const users = [
 ];
 
 const handlers = [
+	rest.post('/', async (req, res, ctx) => {
+		try {
+			const resolve = await req.json();
+
+			if (!resolve)
+				return res(
+					ctx.status(401),
+					ctx.json({ message: 'Нет задач для сохранения.' })
+				);
+
+			return res(
+				ctx.delay(500),
+				ctx.status(200),
+				ctx.json({ message: 'Задачи успешно сохранены.' })
+			);
+		} catch (error) {
+			console.log(error);
+		}
+	}),
+
 	rest.post('/login', async (req, res, ctx) => {
 		try {
 			const resolve = await req.json();

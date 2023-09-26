@@ -1,6 +1,6 @@
 import { redirect } from 'react-router-dom';
 
-import { loginUser } from './api';
+import { loginUser, saveTasksData } from './api';
 
 async function loginAction({ request }) {
 	const formData = await request.formData();
@@ -17,4 +17,12 @@ async function loginAction({ request }) {
 	}
 }
 
-export { loginAction };
+async function todoAction() {
+	try {
+		return await saveTasksData({});
+	} catch (error) {
+		return error.message;
+	}
+}
+
+export { loginAction, todoAction };

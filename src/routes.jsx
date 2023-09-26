@@ -11,12 +11,17 @@ import Settings from './pages/Settings';
 import ToDo from './pages/ToDo';
 import store from './store';
 import { toDoLoader } from './loaders';
-import { loginAction } from './actions';
+import { loginAction, todoAction } from './actions';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path='/' element={<Layout />}>
-			<Route index element={<ToDo store={store} />} loader={toDoLoader} />
+			<Route
+				index
+				element={<ToDo store={store} />}
+				loader={toDoLoader}
+				action={todoAction}
+			/>
 			<Route path='login' element={<Login />} action={loginAction} />
 			<Route path='settings' element={<Settings store={store} />} />
 			<Route path='*' element={<NotFound />} />
