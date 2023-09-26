@@ -28,6 +28,25 @@ const ToDo = observer(function ({ store }) {
 		)
 	);
 
+	const finishedTasks = store.tasks
+		.filter((item) => item.completed)
+		.map((item, i) =>
+			item.isEditing ? (
+				<>
+					<EditTaskForm key={i} editTodo={editTodo} task={item} />
+				</>
+			) : (
+				<Task
+					// index={i}
+					key={i}
+					task={item}
+					toggleComplete={toggleComplete}
+					editTask={editTask}
+					deleteTask={deleteTask}
+				/>
+			)
+		);
+
 	function handleClick() {
 		store.setTasks([
 			...store.tasks,
@@ -95,7 +114,8 @@ const ToDo = observer(function ({ store }) {
 				</Button>
 			</FormControl>
 
-			{tasks}
+			{store.currentFilter === 'all' && tasks}
+			{store.currentFilter === 'finished' && finishedTasks}
 		</Box>
 	);
 });
