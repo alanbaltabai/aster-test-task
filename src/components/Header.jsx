@@ -36,6 +36,18 @@ function Header() {
 						</Typography>
 					</NavLink>
 
+					<NavLink to='login' style={activeNavStyle}>
+						<Typography
+							variant='body1'
+							sx={{
+								color: (theme) => theme.palette.primary.contrastText,
+								'&:hover': { color: '#E9EBEF' },
+							}}
+						>
+							Логин
+						</Typography>
+					</NavLink>
+
 					<NavLink to='settings' style={activeNavStyle}>
 						<Typography
 							variant='body1'

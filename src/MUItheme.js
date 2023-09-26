@@ -32,9 +32,10 @@ function getTheme(mode) {
 					mode: 'dark',
 					primary: {
 						main: '#fefefe', // white
-						dark: '#333336', //
+						dark: '#333336', // gray
 						contrastText: '#FEFEFE', // black
 					},
+
 					background: {
 						default: '#000',
 					},
