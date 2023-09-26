@@ -4,6 +4,8 @@ class Store {
 	task = '';
 	editedTask = '';
 	tasks = [];
+	filters = ['all', 'finished', 'unfinished', 'newestFirst', 'lastFirst'];
+	currentFilter = 'all';
 
 	constructor() {
 		makeAutoObservable(this);
@@ -23,6 +25,14 @@ class Store {
 
 	setTasks(value) {
 		this.tasks = value;
+	}
+
+	setFilters(value) {
+		this.filters = value;
+	}
+
+	setCurrentFilter(value) {
+		this.currentFilter = value;
 	}
 }
 

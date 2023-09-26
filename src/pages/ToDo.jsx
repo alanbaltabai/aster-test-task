@@ -8,6 +8,7 @@ import { observer } from 'mobx-react-lite';
 
 import Task from '../components/Task';
 import EditTaskForm from '../components/EditTaskForm';
+import FilterNavs from '../components/FilterNavs';
 
 const ToDo = observer(function ({ store }) {
 	const tasks = store.tasks.map((item, i) =>
@@ -73,6 +74,8 @@ const ToDo = observer(function ({ store }) {
 
 	return (
 		<Box component='section'>
+			<FilterNavs />
+
 			<FormControl>
 				<FormLabel>Добавьте задачу:</FormLabel>
 				<TextField
