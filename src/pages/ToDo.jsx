@@ -10,7 +10,12 @@ import { Box } from '@mui/material';
 
 const ToDo = observer(function ({ store }) {
 	const tasks = store.tasks.map((item, i) => (
-		<Task key={i} task={item} toggleComplete={toggleComplete} />
+		<Task
+			key={i}
+			task={item}
+			toggleComplete={toggleComplete}
+			deleteTask={deleteTask}
+		/>
 	));
 
 	function handleClick() {
@@ -33,6 +38,10 @@ const ToDo = observer(function ({ store }) {
 				item.id === id ? { ...item, completed: !item.completed } : item
 			)
 		);
+	}
+
+	function deleteTask(id) {
+		store.setTasks(store.tasks.filter((item) => item.id !== id));
 	}
 
 	return (
