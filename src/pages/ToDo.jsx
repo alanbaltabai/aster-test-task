@@ -11,14 +11,13 @@ import EditTaskForm from '../components/EditTaskForm';
 import FilterNavs from '../components/FilterNavs';
 
 const ToDo = observer(function ({ store }) {
-	const tasks = store.tasks.map((item, i) =>
+	const tasks = getFilteredTasks().map((item, i) =>
 		item.isEditing ? (
 			<>
 				<EditTaskForm key={i} editTodo={editTodo} task={item} />
 			</>
 		) : (
 			<Task
-				// index={i}
 				key={i}
 				task={item}
 				toggleComplete={toggleComplete}
@@ -28,43 +27,17 @@ const ToDo = observer(function ({ store }) {
 		)
 	);
 
-	const finishedTasks = store.tasks
-		.filter((item) => item.completed)
-		.map((item, i) =>
-			item.isEditing ? (
-				<>
-					<EditTaskForm key={i} editTodo={editTodo} task={item} />
-				</>
-			) : (
-				<Task
-					// index={i}
-					key={i}
-					task={item}
-					toggleComplete={toggleComplete}
-					editTask={editTask}
-					deleteTask={deleteTask}
-				/>
-			)
-		);
+	function getFilteredTasks() {
+		const finishedTasks = store.tasks.filter((item) => item.isComplete);
+		const unfinishedTasks = store.tasks.filter((item) => !item.isComplete);
+		const newestFirstOrderedTasks = store.tasks.toReversed();
 
-	const unfinishedTasks = store.tasks
-		.filter((item) => !item.completed)
-		.map((item, i) =>
-			item.isEditing ? (
-				<>
-					<EditTaskForm key={i} editTodo={editTodo} task={item} />
-				</>
-			) : (
-				<Task
-					// index={i}
-					key={i}
-					task={item}
-					toggleComplete={toggleComplete}
-					editTask={editTask}
-					deleteTask={deleteTask}
-				/>
-			)
-		);
+		if (store.currentFilter === 'finished') return finishedTasks;
+		if (store.currentFilter === 'unfinished') return unfinishedTasks;
+		if (store.currentFilter === 'newestFirst') return newestFirstOrderedTasks;
+
+		return store.tasks;
+	}
 
 	function handleClick() {
 		store.setTasks([
@@ -72,7 +45,7 @@ const ToDo = observer(function ({ store }) {
 			{
 				id: crypto.randomUUID(),
 				task: store.task,
-				completed: false,
+				isComplete: false,
 				isEditing: false,
 			},
 		]);
@@ -83,7 +56,7 @@ const ToDo = observer(function ({ store }) {
 	function toggleComplete(id) {
 		store.setTasks(
 			store.tasks.map((item) =>
-				item.id === id ? { ...item, completed: !item.completed } : item
+				item.id === id ? { ...item, isComplete: !item.isComplete } : item
 			)
 		);
 	}
@@ -133,9 +106,7 @@ const ToDo = observer(function ({ store }) {
 				</Button>
 			</FormControl>
 
-			{store.currentFilter === 'all' && tasks}
-			{store.currentFilter === 'finished' && finishedTasks}
-			{store.currentFilter === 'unfinished' && unfinishedTasks}
+			{tasks}
 		</Box>
 	);
 });

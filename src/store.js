@@ -4,7 +4,15 @@ class Store {
 	task = '';
 	editedTask = '';
 	tasks = [];
-	filters = ['all', 'finished', 'unfinished', 'newestFirst', 'lastFirst'];
+	filters = [
+		{
+			text: 'Все',
+			value: 'all',
+		},
+		{ text: 'Выполненные', value: 'finished' },
+		{ text: 'Невыполненные', value: 'unfinished' },
+		{ text: 'Сначала новые', value: 'newestFirst' },
+	];
 	currentFilter = 'all';
 
 	constructor() {

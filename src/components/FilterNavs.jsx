@@ -5,17 +5,6 @@ import { observer } from 'mobx-react-lite';
 import store from '../store';
 
 const FilterNavs = observer(function () {
-	const filterTexts = [
-		{
-			text: 'Все',
-			value: 'all',
-		},
-		{ text: 'Выполненные', value: 'finished' },
-		{ text: 'Невыполненные', value: 'unfinished' },
-		{ text: 'Сначала новые', value: 'newestFirst' },
-		{ text: 'Сначала старые', value: 'lastFirst' },
-	];
-
 	return (
 		<Box
 			sx={{
@@ -24,7 +13,7 @@ const FilterNavs = observer(function () {
 				gap: (theme) => theme.spacing(4.5),
 			}}
 		>
-			{filterTexts.map((item, i) => (
+			{store.filters.map((item, i) => (
 				<Typography
 					key={i}
 					sx={{
