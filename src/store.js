@@ -2,6 +2,7 @@ import { makeAutoObservable } from 'mobx';
 class Store {
 	mode = 'light';
 	task = '';
+	editedTask = '';
 	tasks = [];
 
 	constructor() {
@@ -14,6 +15,10 @@ class Store {
 
 	setTask(value) {
 		this.task = value;
+	}
+
+	setEditedTask(value) {
+		this.editedTask = value;
 	}
 
 	setTasks(value) {

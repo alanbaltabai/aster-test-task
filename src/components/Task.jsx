@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-function Task({ task, toggleComplete, deleteTask }) {
+function Task({ /* index, */ task, toggleComplete, editTask, deleteTask }) {
 	return (
 		<Box
 			sx={{
@@ -21,14 +21,14 @@ function Task({ task, toggleComplete, deleteTask }) {
 		>
 			<Typography
 				onClick={() => toggleComplete(task?.id)}
-				sx={task?.completed && { textDecoration: 'line-through' }}
+				sx={task?.completed ? { textDecoration: 'line-through' } : {}}
 			>
 				{task?.task}
 			</Typography>
 			<Box sx={{ display: 'flex', gap: (theme) => theme.spacing(2) }}>
 				<FontAwesomeIcon
 					icon={faPenToSquare}
-					// onClick={() => editTask(task?.id)}
+					onClick={() => editTask(task?.id)}
 				/>
 				<FontAwesomeIcon icon={faTrash} onClick={() => deleteTask(task?.id)} />
 			</Box>
