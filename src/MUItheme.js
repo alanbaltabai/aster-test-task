@@ -27,17 +27,19 @@ function getTheme(mode) {
 						dark: '#1E385B', // dark-blue
 						contrastText: '#FEFEFE', // white
 					},
+					secondary: {
+						main: '#FEFEFE',
+					},
 			  }
 			: {
 					mode: 'dark',
 					primary: {
 						main: '#fefefe', // white
 						dark: '#333336', // gray
-						contrastText: '#FEFEFE', // black
+						contrastText: '#FEFEFE',
 					},
-
-					background: {
-						default: '#000',
+					secondary: {
+						main: '#000',
 					},
 			  };
 

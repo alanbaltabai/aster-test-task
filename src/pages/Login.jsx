@@ -20,7 +20,7 @@ function Login() {
 				type='submit'
 				variant='contained'
 				sx={{
-					color: (theme) => theme.palette.primary.dark,
+					color: (theme) => theme.palette.secondary.main,
 					'&:hover': { color: (theme) => theme.palette.primary.main },
 				}}
 			>

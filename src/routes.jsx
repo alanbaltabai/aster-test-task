@@ -16,7 +16,7 @@ import { loginAction } from './actions';
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path='/' element={<Layout />}>
-			<Route index element={<ToDo />} loader={toDoLoader} />
+			<Route index element={<ToDo store={store} />} loader={toDoLoader} />
 			<Route path='login' element={<Login />} action={loginAction} />
 			<Route path='settings' element={<Settings store={store} />} />
 			<Route path='*' element={<NotFound />} />
